@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+
+  helper_method :current_user
+
   def index
     render 'new'
   end
@@ -17,4 +20,5 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     render "new"
   end
+  
 end
