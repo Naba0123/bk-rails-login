@@ -3,7 +3,7 @@
 ログイン成功しました。
 </p>
 <p>
-こんにちは、<%= User.find(session[:user_id]).account %>さんっ！
+こんにちは、<%= @user.account %>さんっ！
 </p>
 
 <%= link_to 'ログアウトする', session_path(session[:user_id]), :confirm => 'ログアウトしますか？', :method => :delete %>
