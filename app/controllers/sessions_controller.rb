@@ -1,12 +1,10 @@
 class SessionsController < ApplicationController
 
-#  def current_user
-#    @current_user ||= User.find(session[:user_id]) if session[:user_id]
-#  end
-
-#  helper_method :current_user
+  skip_before_filter :check_logined
 
   def index
+    # セッション残ってるのを心配してセッション切ってます・・・（いいのかな
+    session[:user_id] = nil
     render 'new'
   end
   
@@ -19,7 +17,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       render 'login_success', :notice => "Logged in!"
     else
-      flash.now.alert = "Invalid account or password"
+      flash.now.alert = "Invalid email or password"
       render 'login_failure'
     end
   end
