@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       render 'login_success', :notice => "Logged in!"
     else
-      flash.now.alert = "Invalid email or password"
+      flash.now.alert = "Invalid account or password"
       render 'login_failure'
     end
   end
