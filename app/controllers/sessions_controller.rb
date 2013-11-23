@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
     user = User.find_by_account params[:account]
     if user && user.authenticate(params[:pass])
       session[:user_id] = user.id
-      render 'login_success', :notice => "Logged in!"
+      redirect_to :controller => 'tops', :action => 'index', :notice => "Logged in!"
     else
       flash.now.alert = "Invalid account or password"
       render 'login_failure'
