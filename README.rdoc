@@ -3,12 +3,12 @@
 自分のためのメモです。
   
 === 仕様
-* ログイン機能しかありません。
-* ユーザー作成はこれからやります。
-* 以下の情報でログインだけできます。  
+* 新規登録が出来るようになりました
+* 初期では下のアカウントのみ存在しています
     account : admin
     password : test
   
 === 参考にさせて頂いたサイト様
 * Ruby on Railsログイン機能 - アンドロイド・アミーゴ・Rails --- http://amigobellick.blog.fc2.com/blog-entry-10.html
 * RoR project 研究室配属システム構築ログ --- http://www.ep.sci.hokudai.ac.jp/~ror/haizoku/
+* Rails3 routes.rb まとめ - akkunchoi.github.com --- http://akkunchoi.github.io/rails3-routes.html
