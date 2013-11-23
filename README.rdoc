@@ -1,12 +1,22 @@
 == README
+自分のためのメモです。scaffoldを自分で作ろうとして苦難中……
 
-自分のためのメモです。
+=== 多分使い方
+（自分で迷ったなんて言えない）
+    $ git clone https://github.com/Naba16/login.git
+    $ cd login
+    $ rake db:migrate
+    $ rails s
+
   
-=== 仕様
-* 新規登録が出来るようになりました
-* 初期では下のアカウントのみ存在しています
-    account : admin
-    password : test
+=== 現在行えること
+* アカウントの新規登録
+* ログインする
+* ログアウトする
+
+=== 今後
+* アカウント情報の編集
+* アカウントの削除
   
 === 参考にさせて頂いたサイト様
 * Ruby on Railsログイン機能 - アンドロイド・アミーゴ・Rails --- http://amigobellick.blog.fc2.com/blog-entry-10.html
