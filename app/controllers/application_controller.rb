@@ -5,13 +5,13 @@ class ApplicationController < ActionController::Base
   
   before_filter :check_logined
   
+  helper_method :current_user
+  
   private
   
-#  def current_user  
-#    @current_user ||= User.find(session[:user_id])
-#  end
-    
-#  helper_method :current_user
+  def current_user  
+    @current_user ||= User.find(session[:user_id])
+  end
   
   def check_logined
     if session[:user_id]

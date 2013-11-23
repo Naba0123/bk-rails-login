@@ -1,29 +1,37 @@
-<h1>Sign Up</h1>
+<h1>新規アカウントの作成</h1>
 
 <%= form_for @user do |f| %>
   <% if @user.errors.any?%>
     <div class="error_messages">
-      <h2>Form is invalid</h2>
+      <h3>エラー様のお通りなのでよく読みましょう</h3>
       <ul>
         <% for message in @user.errors.full_messages %>
-          <li><%= message %></li>
+          <li><font color="green"><%= message %></font></li>
         <% end %>
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= f.label :account %>
-    <%= f.text_field :account %>
-  </div>
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="actions"><%= f.submit %></div>
+  <table>
+    <tr>
+      <div class="field">
+        <td><%= f.label :account, 'アカウント名' %></td>
+        <td><%= f.text_field :account %></td>
+      </div>
+     </tr>
+     <tr>
+       <div class="field">
+         <td><%= f.label :パスワード %></td>
+         <td><%= f.password_field :password %></td>
+       </div>
+     </tr>
+     <tr>
+       <div class="field">
+         <td><%= f.label :パスワードの確認 %></td>
+         <td><%= f.password_field :password_confirmation %></td>
+       </div>
+     </tr>
+     <tr>
+       <td><div class="actions"><%= f.submit "登録", :name => "signup" %>  <%= f.submit "戻る", :name => "back" %></div></td>
+       <td></td>
+  </table>
 <% end %>
-
-<%= link_to '戻る', sessions_path %>

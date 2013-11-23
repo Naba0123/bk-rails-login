@@ -3,28 +3,37 @@ class SessionsController < ApplicationController
   skip_before_filter :check_logined
 
   def index
-    # セッション残ってるのを心配してセッション切ってます・・・（いいのかな
-    session[:user_id] = nil
     render 'new'
   end
   
   def new
+    # セッション中ならtopページに行く
+    if session[:user_id]
+      flash.notice = "既にログインしています"
+      redirect_to :controller => 'tops', :action => 'index'
+    end
   end
   
   def create
-    user = User.find_by_account params[:account]
-    if user && user.authenticate(params[:pass])
-      session[:user_id] = user.id
-      redirect_to :controller => 'tops', :action => 'index', :notice => "Logged in!"
+    if params[:login]
+      user = User.find_by_account params[:account]
+      if user && user.authenticate(params[:pass])
+        session[:user_id] = user.id
+        flash.notice = "ログインしました"
+        redirect_to :controller => 'tops', :action => 'index'
+      else
+        flash.notice = "アカウント名またはパスワードが間違っています"
+        render 'new'
+      end
     else
-      flash.now.alert = "Invalid account or password"
-      render 'login_failure'
+      redirect_to :controller => 'users', :action => 'new'
     end
   end
   
   def destroy
     session[:user_id] = nil
-    render "new", :notice => "Logged out!"
+    flash.notice = "ログアウトしました。"
+    render "new"
   end
   
 end

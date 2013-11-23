@@ -1,24 +1,23 @@
 <h1>ログイン画面</h1>
 
-<%= notice %>
-
 <%= form_tag sessions_path do %>
+
+<font color="green"><%= notice %></font>
+</br></br>
+
 <table id="login_form">
-    <tr>
+  <tr>
     <td><%= label_tag :account, 'アカウント名' %></td>
     <td><%= text_field_tag :account, params[:account] %></td>
-</tr>
-
-<tr>
+  </tr>
+  <tr>
     <td><%= label_tag :pass, 'パスワード' %></td>
     <td><%= password_field_tag :pass, params[:pass] %></td>
-</tr>
-
-<tr>
-    <td><%= submit_tag "ログイン" %></td>
-</tr>
+  </tr>
+  <tr>
+    <td><%= submit_tag "ログイン", :name => "login" %></td>
+    <td><%= submit_tag "新規登録", :name => "signup" %></td>
+  </tr>
 </table>
 
 <% end %>
-
-<%= link_to '新規登録', new_user_path %>

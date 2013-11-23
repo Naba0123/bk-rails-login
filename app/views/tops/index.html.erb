@@ -1,12 +1,13 @@
-<h1>ログイン成功</h1>
+<h1>Member Page</h1>
 
-<%= notice %>
+<font color="green"><%= notice %></font>
+</br></br>
 
 <p>
-ログイン成功しました。
+ようこそ会員画面へ
 </p>
 <p>
-こんにちは、<%= User.find(session[:user_id]).account %>さんっ！
+こんにちは、<%= @current_user.account %>さんっ！
 </p>
 
-<%= link_to 'ログアウトする', session_path(session[:user_id]), :confirm => 'ログアウトしますか？', :method => :delete %>
+<%= button_to("ログアウト", session_path(session[:user_id]), {:method => :delete, :confirm => 'ログアウトしますか？'}) %>
