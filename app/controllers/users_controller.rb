@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :set_user, only: [:edit, :update]
+
   skip_before_filter :check_logined
 
   def new
@@ -25,4 +27,28 @@ class UsersController < ApplicationController
       redirect_to sessions_url
     end
   end
+  
+  def edit
+    render "edit"
+  end
+  
+  def update
+    if params[:update]
+      if @user.update_attributes(params[:user])
+        flash.notice = "アカウントが更新されました"
+        redirect_to :controller => 'tops', :action => 'index'
+      else
+        render "edit"
+      end
+    else
+      flash.notice = "アカウント更新がキャンセルされました"
+      redirect_to :controller => 'tops', :action => 'index'
+    end
+  end
+  
+  private
+    def set_user
+      @user = User.find(session[:user_id])
+    end
+  
 end

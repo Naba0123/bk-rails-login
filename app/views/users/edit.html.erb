@@ -1,0 +1,38 @@
+<h1>アカウント情報の編集</h1>
+
+<%= form_for @user do |f| %>
+  <% if @user.errors.any?%>
+    <div class="error_messages">
+      <h3>エラー様のお通りなのでよく読みましょう</h3>
+      <ul>
+        <% for message in @user.errors.full_messages %>
+          <li><font color="green"><%= message %></font></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <table>
+    <tr>
+      <div class="field">
+        <td><%= f.label :account, 'アカウント名' %></td>
+        <td><%= f.text_field :account %></td>
+      </div>
+     </tr>
+     <tr>
+       <div class="field">
+         <td><%= f.label :パスワード %></td>
+         <td><%= f.password_field :password %></td>
+       </div>
+     </tr>
+     <tr>
+       <div class="field">
+         <td><%= f.label :パスワードの確認 %></td>
+         <td><%= f.password_field :password_confirmation %></td>
+       </div>
+     </tr>
+     <tr>
+       <td><div class="actions"><%= f.submit "登録", :name => "update" %>  <%= f.submit "戻る", :name => "back" %></div></td>
+       <td></td>
+     </tr>
+  </table>
+<% end %>
