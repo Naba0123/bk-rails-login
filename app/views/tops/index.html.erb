@@ -9,5 +9,5 @@
 <p>
 こんにちは、<%= @current_user.account %>さんっ！
 </p>
-<%= button_to("ユーザー情報の編集", edit_user_path(session[:user_id])) %>
+<%= link_to 'ユーザー情報の編集', edit_user_path(session[:user_id]) %>
 <%= button_to("ログアウト", session_path(session[:user_id]), {:method => :delete, :confirm => 'ログアウトしますか？'}) %>
