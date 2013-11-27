@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
       begin
         @user = User.find(session[:user_id])
       rescue ActiveRecord::RecordNotFound
-        logger.error "セッションの情報(" + session[:user_id] + ")は user_infos には存在しません。"
+#        logger.error "セッションの情報(" + session[:user_id] + ")は user_infos には存在しません。"
         reset_session
       end
     end
